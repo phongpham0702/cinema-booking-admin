@@ -1,15 +1,12 @@
+import { AuthLayout, MainLayout } from '@/components/Layouts';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
+import { Suspense } from 'react';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const interSans = Inter({
+  variable: '--font-inter-sans',
+  subsets: ['latin', 'vietnamese'],
 });
 
 export const metadata: Metadata = {
@@ -23,11 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${interSans.className} bg-background text-typography antialiased`}
       >
-        {children}
+        <MainLayout>
+          <Suspense fallback="loading...">
+            <AuthLayout>{children}</AuthLayout>
+          </Suspense>
+        </MainLayout>
       </body>
     </html>
   );

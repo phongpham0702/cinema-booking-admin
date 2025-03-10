@@ -14,10 +14,7 @@ const prettierRules = {
       arrowParens: 'avoid',
       trailingComma: 'all',
       printWidth: 80,
-      plugins: [
-        '@trivago/prettier-plugin-sort-imports',
-        'prettier-plugin-tailwindcss',
-      ],
+      plugins: ['@trivago/prettier-plugin-sort-imports'],
       importOrderSeparation: false,
       importOrderSortSpecifiers: true,
       importOrderCaseInsensitive: true,
